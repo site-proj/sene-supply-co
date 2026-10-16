@@ -1,0 +1,21 @@
+{
+  "name": "sene-supply-store",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "firebase:login": "firebase login",
+    "firebase:emulators": "firebase emulators:start --only auth,functions,firestore",
+    "firebase:deploy": "firebase deploy --only firestore:rules,functions,hosting"
+  },
+  "dependencies": {
+    "firebase": "^11.0.0"
+  },
+  "devDependencies": {
+    "firebase-tools": "15.34.0",
+    "vite": "^6.0.0"
+  }
+}
