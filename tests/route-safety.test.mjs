@@ -35,7 +35,7 @@ test('Checkout and search stay in the Sene project', () => {
 
 test('Main navigation never links to the GitHub Pages root or to other projects', () => {
   const html = read('index.html');
-  for (const [, href] of html.matchAll(/href="([^"]*)"/g)) {
+  for (const [, href] of html.matchAll(/<a\b[^>]*\bhref="([^"]*)"/g)) {
     if (/^(?:https?:|mailto:|tel:|#)/.test(href)) continue;
     if (href === '%BASE_URL%') continue;
     assert.ok(new URL(href, base).pathname.startsWith('/sene-supply-co/'), href);
