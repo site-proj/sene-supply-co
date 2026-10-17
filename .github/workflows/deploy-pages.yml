@@ -29,6 +29,7 @@ jobs:
       - uses: actions/configure-pages@v5
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
+      - run: node scripts/check-paths.mjs
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist

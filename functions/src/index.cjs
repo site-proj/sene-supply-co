@@ -73,6 +73,8 @@ exports.createCheckout = onCall({secrets:[mpTestToken,shippingToken],enforceAppC
   if(!selected) throw new HttpsError('failed-precondition','Escolha uma opção de frete válida.');
   const storeUrl=process.env.STORE_PUBLIC_URL?.replace(/\/$/,'');const webhookUrl=process.env.MERCADO_PAGO_WEBHOOK_URL;
   if(!storeUrl||(!storeUrl.startsWith('https://')&&!process.env.FUNCTIONS_EMULATOR)||!webhookUrl||!webhookUrl.startsWith('https://')) throw new HttpsError('failed-precondition','Configure as URLs públicas HTTPS antes de ativar o checkout sandbox.');
+  const publicStore=new URL(storeUrl);
+  if(publicStore.hostname==='site-proj.github.io' && publicStore.pathname.replace(/\/$/,'')!=='/sene-supply-co') throw new HttpsError('failed-precondition','A URL p�blica deve permanecer em /sene-supply-co/.');
   const token=mpTestToken.value();if(!token)throw new HttpsError('failed-precondition','Cadastre as credenciais de teste do Mercado Pago.');
   const orderId=crypto.createHash('sha256').update(`${req.auth.uid}:${idempotencyKey}`).digest('hex').slice(0,40), ref=db.doc(`orders/${orderId}`);
   const previous=await ref.get();if(previous.exists&&previous.get('payment.sandboxCheckoutUrl'))return{orderId,sandboxCheckoutUrl:previous.get('payment.sandboxCheckoutUrl'),checkoutEnabled:true};
