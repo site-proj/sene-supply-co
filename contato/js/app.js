@@ -7,19 +7,19 @@ const STORE_CONFIG = Object.freeze({
 });
 
 const items = [
-  {id:'ride', name:'FUCK THE DESTINATION', subtitle:'MOTO CULTURE / PRETA',image:'https://site-proj.github.io/sene-supply-co/assets/destination.jpg',detail:'Camiseta preta com estampa de motociclista nas costas.',tag:'MOTO CULTURE',category:'moto',color:'Preta'},
-  {id:'negroni',name:'NEGRONI',subtitle:'FOOD & BOOZE / PRETA',image:'https://site-proj.github.io/sene-supply-co/assets/negroni-model.jpg',detail:'Camiseta preta com arte Negroni colorida nas costas.',tag:'FEATURED',category:'booze',color:'Preta'},
-  {id:'classic-white',name:'CLASSIC LOGO — WHITE',subtitle:'SENE ORIGINAL / BRANCA',image:'https://site-proj.github.io/sene-supply-co/assets/classic-white.jpg',detail:'Camiseta branca com logo SENE no peito.',tag:'CLASSIC',category:'classic',color:'Branca'},
-  {id:'roadback',name:'LUCKY DIRTY HANDS',subtitle:'MOTO CULTURE / PRETA',image:'https://site-proj.github.io/sene-supply-co/assets/rider.jpg',detail:'Camiseta preta com estampa circular nas costas.',tag:'NEW DROP',category:'moto',color:'Preta'},
-  {id:'custom',name:'CUSTOM MOTORCYCLE',subtitle:'MOTO CULTURE / PRETA',image:'https://site-proj.github.io/sene-supply-co/assets/custom-back.jpg',detail:'Camiseta preta com estampa Custom Motorcycle nas costas.',tag:'MOTO CULTURE',category:'moto',color:'Preta'},
-  {id:'classic-black',name:'SENE CLASSIC — BLACK',subtitle:'SENE ORIGINAL / PRETA',image:'https://site-proj.github.io/sene-supply-co/assets/classic-man.jpg',detail:'Camiseta preta com marca SENE no peito.',tag:'CLASSIC',category:'classic',color:'Preta'},
+  {id:'ride', name:'FUCK THE DESTINATION', subtitle:'MOTO CULTURE / PRETA',image:'/assets/destination.jpg',detail:'Camiseta preta com estampa de motociclista nas costas.',tag:'MOTO CULTURE',category:'moto',color:'Preta'},
+  {id:'negroni',name:'NEGRONI',subtitle:'FOOD & BOOZE / PRETA',image:'/assets/negroni-model.jpg',detail:'Camiseta preta com arte Negroni colorida nas costas.',tag:'FEATURED',category:'booze',color:'Preta'},
+  {id:'classic-white',name:'CLASSIC LOGO — WHITE',subtitle:'SENE ORIGINAL / BRANCA',image:'/assets/classic-white.jpg',detail:'Camiseta branca com logo SENE no peito.',tag:'CLASSIC',category:'classic',color:'Branca'},
+  {id:'roadback',name:'LUCKY DIRTY HANDS',subtitle:'MOTO CULTURE / PRETA',image:'/assets/rider.jpg',detail:'Camiseta preta com estampa circular nas costas.',tag:'NEW DROP',category:'moto',color:'Preta'},
+  {id:'custom',name:'CUSTOM MOTORCYCLE',subtitle:'MOTO CULTURE / PRETA',image:'/assets/custom-back.jpg',detail:'Camiseta preta com estampa Custom Motorcycle nas costas.',tag:'MOTO CULTURE',category:'moto',color:'Preta'},
+  {id:'classic-black',name:'SENE CLASSIC — BLACK',subtitle:'SENE ORIGINAL / PRETA',image:'/assets/classic-man.jpg',detail:'Camiseta preta com marca SENE no peito.',tag:'CLASSIC',category:'classic',color:'Preta'},
 ];
 const graphics = [
-  {id:'ride-art',name:'RIDE / FUCK THE DESTINATION',sub:'BACK PRINT',image:'https://site-proj.github.io/sene-supply-co/assets/destination-art.jpg',linked:'ride'},
-  {id:'negroni-art',name:'NEGRONI ART',sub:'FULL-COLOR PRINT',image:'https://site-proj.github.io/sene-supply-co/assets/negroni.jpg',linked:'negroni'},
-  {id:'chef-art',name:'CHEF DUCK',sub:'ORIGINAL ARTWORK',image:'https://site-proj.github.io/sene-supply-co/assets/duck-chef.jpg',linked:'chef-art'},
-  {id:'cleaver-art',name:'CLEAVER CLUB',sub:'FOOD. BOOZE. MACHINES.',image:'https://site-proj.github.io/sene-supply-co/assets/cleaver-logo.jpg',linked:'cleaver-art'},
-  {id:'octopus-art',name:'KITCHEN CHAOS',sub:'ORIGINAL ARTWORK',image:'https://site-proj.github.io/sene-supply-co/assets/octopus-art.jpg',linked:'octopus-art'}
+  {id:'ride-art',name:'RIDE / FUCK THE DESTINATION',sub:'BACK PRINT',image:'/assets/destination-art.jpg',linked:'ride'},
+  {id:'negroni-art',name:'NEGRONI ART',sub:'FULL-COLOR PRINT',image:'/assets/negroni.jpg',linked:'negroni'},
+  {id:'chef-art',name:'CHEF DUCK',sub:'ORIGINAL ARTWORK',image:'/assets/duck-chef.jpg',linked:'chef-art'},
+  {id:'cleaver-art',name:'CLEAVER CLUB',sub:'FOOD. BOOZE. MACHINES.',image:'/assets/cleaver-logo.jpg',linked:'cleaver-art'},
+  {id:'octopus-art',name:'KITCHEN CHAOS',sub:'ORIGINAL ARTWORK',image:'/assets/octopus-art.jpg',linked:'octopus-art'}
 ];
 const byId=id=>document.getElementById(id);
 const waUrl = text => `https://wa.me/${STORE_CONFIG.whatsappDigits}?text=${encodeURIComponent(text)}`;
