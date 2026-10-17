@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
 const base = 'https://site-proj.github.io/sene-supply-co/';
-for (const file of ['index.html','src.js','store-url.js']) {
+for (const file of ['index.html','src.js']) {
  const source=readFileSync(file,'utf8');
  assert(!/location\.(?:href\s*=|assign\()\s*[`'"]\/(?!\/)/.test(source), `${file}: root navigation`);
  for (const [,link] of source.matchAll(/href="([^"]+)"/g)) {
@@ -22,3 +22,4 @@ for (const file of ['dist/index.html','dist/contato/index.html']) {
  }
 }
 console.log('PASS: built links and assets stay in Sene');
+

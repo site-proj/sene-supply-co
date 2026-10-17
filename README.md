@@ -65,15 +65,16 @@ Pagamento sandbox verificado pelo webhook â†’ pedido `paid` e produÃ§Ã£o `queued
 
 Os preÃ§os $28/$32 da prÃ©via local seguem a imagem modelo. A integraÃ§Ã£o ativa lÃª preÃ§os BRL do Firestore e exige `VITE_STORE_CURRENCY=BRL`. Este projeto permanece em modo de desenvolvimento atÃ© o proprietÃ¡rio preencher e validar as contas e os dados operacionais.
 
-## Auditoria de navegação
+## Auditoria de navegaï¿½ï¿½o
 
 A loja permanece em `/sene-supply-co/` e a landing em `/sene-supply-co/contato/`.
 Checkout: `/sene-supply-co/?page=checkout`. Busca: `/sene-supply-co/?page=catalog&search=...`.
-`store-url.js` resolve redirecionamentos com a base do Vite. Nunca use `/?page=...`.
+Os redirecionamentos usam `document.baseURI` com a base do Vite. Nunca use `/?page=...`.
 Configure `STORE_PUBLIC_URL=https://site-proj.github.io/sene-supply-co/` no backend.
 
-Validação: `pnpm build` e `node scripts/check-paths.mjs` (também executado antes do deploy).
+Validaï¿½ï¿½o: `pnpm build` e `node scripts/check-paths.mjs` (tambï¿½m executado antes do deploy).
 Para a auditoria de navegador, disponibilize Playwright e Edge, inicie `pnpm preview --host 127.0.0.1` e execute `node scripts/browser-audit.cjs`.
-`PLAYWRIGHT_MODULE` aceita o caminho do módulo instalado; `SENE_TEST_URL` seleciona o site publicado.
-O teste cobre desktop 1440px e mobile 390px, links, imagens, overflow, busca, catálogo, produto, sacola, checkout desativado, conta/painéis sem credenciais, refresh, landing, fotos e destinos WhatsApp.
-Autenticação real, frete e pagamento dependem da configuração de serviços e não são comprovados por este teste.
+`PLAYWRIGHT_MODULE` aceita o caminho do mï¿½dulo instalado; `SENE_TEST_URL` seleciona o site publicado.
+O teste cobre desktop 1440px e mobile 390px, links, imagens, overflow, busca, catï¿½logo, produto, sacola, checkout desativado, conta/painï¿½is sem credenciais, refresh, landing, fotos e destinos WhatsApp.
+Autenticaï¿½ï¿½o real, frete e pagamento dependem da configuraï¿½ï¿½o de serviï¿½os e nï¿½o sï¿½o comprovados por este teste.
+
