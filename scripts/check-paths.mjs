@@ -23,3 +23,13 @@ for (const file of ['dist/index.html','dist/contato/index.html']) {
 }
 console.log('PASS: built links and assets stay in Sene');
 
+
+const showcase=readFileSync('dist/vitrine/index.html','utf8');
+assert(showcase.includes('id="products"'));
+assert(showcase.includes('id="productDialog"'));
+assert(readFileSync('dist/vitrine/app.js','utf8').includes('5547996102917'));
+for(const [,link] of showcase.matchAll(/(?:href|src)="([^"]+)"/g)) {
+ const url=new URL(link,base+'vitrine/');
+ if(url.origin===new URL(base).origin)assert(url.pathname.startsWith('/sene-supply-co/'),'vitrine: '+link);
+}
+console.log('PASS: Vitrine route, product dialog, WhatsApp and scoped assets');

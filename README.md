@@ -78,3 +78,10 @@ Para a auditoria de navegador, disponibilize Playwright e Edge, inicie `pnpm pre
 O teste cobre desktop 1440px e mobile 390px, links, imagens, overflow, busca, cat�logo, produto, sacola, checkout desativado, conta/pain�is sem credenciais, refresh, landing, fotos e destinos WhatsApp.
 Autentica��o real, frete e pagamento dependem da configura��o de servi�os e n�o s�o comprovados por este teste.
 
+
+
+## Vitrine de produtos do Sene
+
+Landing independente em `/sene-supply-co/vitrine/`, com filtros por coleção, cartões de produto interativos e consulta de tamanho/modelagem pelo WhatsApp. A página foi desenhada primeiro para telas pequenas e mantém o pedido direto para o WhatsApp informado, sem criar checkout.
+
+Validação visual local: `node scripts/vitrine-audit.cjs` com Playwright e Edge, em larguras de 390 e 1440 px. Confere categorias, modal, mensagem do WhatsApp, carregamento de imagens e overflow horizontal.
