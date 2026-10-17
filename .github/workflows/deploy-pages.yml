@@ -30,6 +30,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm test
       - run: pnpm build
+      - run: node scripts/check-paths.mjs
       - uses: actions/upload-pages-artifact@v4
         with:
           path: dist

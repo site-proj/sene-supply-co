@@ -26,7 +26,7 @@ Sem Firebase configurado, a loja usa o catálogo de prévia; sacola e páginas f
 1. Crie o projeto Firebase. Na pasta do projeto, rode `pnpm firebase:login` e depois `pnpm exec firebase use --add` para vincular o ID do projeto.
 2. Copie `.env.example` para `.env.local` e preencha as chaves públicas do app Web Firebase. Registre um provedor reCAPTCHA v3 em App Check, cadastre o domínio do site e informe a chave pública em `VITE_FIREBASE_APPCHECK_SITE_KEY`. As chamadas de Functions exigem esse token; sem ele, autenticação ainda funciona, mas o checkout fica desativado.
 3. Instale dependências do backend: `pnpm --dir functions install`.
-4. Cadastre `products` no Firestore com `title`, `description`, `priceCents` em centavos de BRL, `imageUrl` (ex.: `/assets/destination.jpg`), `active: true`, `tag` e `shippingPackage: { width, height, length, weight }`. Dimensões em centímetros e peso em kg.
+4. Cadastre `products` no Firestore com `title`, `description`, `priceCents` em centavos de BRL, `imageUrl` (ex.: `/sene-supply-co/assets/destination.jpg`), `active: true`, `tag` e `shippingPackage: { width, height, length, weight }`. Dimensões em centímetros e peso em kg.
 5. Publique com `pnpm firebase:deploy`.
 6. Cadastre o primeiro papel `owner` por um processo administrativo confiável no Firebase Admin SDK. Depois o callable `assignOrderRole` permite ao proprietário atribuir apenas `owner`, `printer` ou `customer`. Não disponibilize a atribuição de papéis no cliente.
 
@@ -64,3 +64,17 @@ Pagamento sandbox verificado pelo webhook → pedido `paid` e produção `queued
 - Checkout e cotação não foram chamados com contas externas: credenciais e dados de frete ainda não foram fornecidos.
 
 Os preços $28/$32 da prévia local seguem a imagem modelo. A integração ativa lê preços BRL do Firestore e exige `VITE_STORE_CURRENCY=BRL`. Este projeto permanece em modo de desenvolvimento até o proprietário preencher e validar as contas e os dados operacionais.
+
+## Auditoria de navega��o
+
+A loja permanece em `/sene-supply-co/` e a landing em `/sene-supply-co/contato/`.
+Checkout: `/sene-supply-co/?page=checkout`. Busca: `/sene-supply-co/?page=catalog&search=...`.
+Os redirecionamentos usam `document.baseURI` com a base do Vite. Nunca use `/?page=...`.
+Configure `STORE_PUBLIC_URL=https://site-proj.github.io/sene-supply-co/` no backend.
+
+Valida��o: `pnpm build` e `node scripts/check-paths.mjs` (tamb�m executado antes do deploy).
+Para a auditoria de navegador, disponibilize Playwright e Edge, inicie `pnpm preview --host 127.0.0.1` e execute `node scripts/browser-audit.cjs`.
+`PLAYWRIGHT_MODULE` aceita o caminho do m�dulo instalado; `SENE_TEST_URL` seleciona o site publicado.
+O teste cobre desktop 1440px e mobile 390px, links, imagens, overflow, busca, cat�logo, produto, sacola, checkout desativado, conta/pain�is sem credenciais, refresh, landing, fotos e destinos WhatsApp.
+Autentica��o real, frete e pagamento dependem da configura��o de servi�os e n�o s�o comprovados por este teste.
+
